@@ -10,6 +10,17 @@ public abstract class Veiculo {
 	private int velocMax;
 	private Motor motor;
 
+	public Veiculo(String placa, String marca, String modelo, String cor, int qtdRodas, int velocMax, int qtdPistoes,
+			int potencia) {
+		this.placa = placa;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.cor = cor;
+		this.qtdRodas = qtdRodas;
+		this.velocMax = velocMax;
+		this.motor = new Motor(qtdPistoes, potencia);
+	}
+
 	public String getPlaca() {
 		return placa;
 	}
@@ -65,7 +76,13 @@ public abstract class Veiculo {
 	public void setMotor(Motor motor) {
 		this.motor = motor;
 	}
-	
+
 	public abstract double calcVeiculo(double velocMax);
+
+	@Override
+	public String toString() {
+		return "Veiculo [placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", qtdRodas="
+				+ qtdRodas + ", velocMax=" + velocMax + ", motor=" + motor + "]";
+	}
 
 }

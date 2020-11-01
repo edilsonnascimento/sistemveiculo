@@ -5,6 +5,14 @@ public class Carga extends Veiculo implements Calcula {
 	private int tara;
 	private int cargaMax;
 
+	
+	public Carga(String placa, String marca, String modelo, String cor, int qtdRodas, int velocMax, int qtdPistoes,
+			int potencia, int tara, int cargaMax) {
+		super(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia);
+		this.tara = tara;
+		this.cargaMax = cargaMax;
+	}
+
 	public int getTara() {
 		return tara;
 	}
