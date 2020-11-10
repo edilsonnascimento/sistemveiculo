@@ -1,8 +1,14 @@
 package sistemveiculo;
 
 import java.util.List;
+import java.util.Optional;
 
 public class VeiculoUtil {
+	
+	public VeiculoUtil(List<Passeio> listaPasseio, List<Carga> listaCarga) {
+		inicializaListaCarga(listaCarga);
+		inicializaListaPasseio(listaPasseio);
+	}
 
 	public void inicializaListaPasseio(List<Passeio> lista) {
 		Passeio camaro      = new Passeio("AXU456", "Chevrolet", "ZT", "preta",    4, 350, 8, 800, 5);
@@ -18,14 +24,59 @@ public class VeiculoUtil {
 	    lista.add(golf);
 	}
 	
-	public void mostrarTodosVeiculos(List<Passeio> lista) {
+	public void inicializaListaCarga(List<Carga> lista) {
+		Carga volvoFH540       = new Carga("ABSSE", "Volvo",     "FH540",       "azul",     12, 350, 8, 800, 1500, 16000);
+		Carga scaniaR450       = new Carga("HGI056", "Scania",   "R450",        "vermelho", 16, 110, 4, 110, 1500, 16000);
+		Carga mercedes         = new Carga("RSH086", "Mercedes", "Actros 2651", "bordo",    14, 245, 8, 110, 1500, 16000);
+		Carga dafXf            = new Carga("MNLW90", "Daf",      "XF 105 510",  "preta",    12, 320, 8, 110, 1500, 16000);
+		Carga teslaTSLA        = new Carga("WSG768", "tesla",    "Semi",        "chumbo",   12, 300, 4, 110, 1500, 16000);
+		
+	    lista.add(volvoFH540);
+	    lista.add(scaniaR450);
+	    lista.add(mercedes);
+	    lista.add(dafXf);
+	    lista.add(teslaTSLA);
+	}
+
+	public void mostrarTodosVeiculosPasseio(List<Passeio> lista) {
+		lista.stream().forEach(System.out::println);
+	}
+	
+	public void mostrarTodosVeiculosCarga(List<Carga> lista) {
 		lista.stream().forEach(System.out::println);
 	}
 
 	public void mostraVeiculoPassioPlaca(String placa, List<Passeio> carrosPasseio) {
-		carrosPasseio.stream()
+		Optional<Passeio> carro = carrosPasseio.stream()
 				.filter(veiculo -> veiculo.getPlaca().equals(placa))
-				.forEach(System.out::println);
+				.findFirst();
+		System.out.println(carro.get().toString());
 	}
+
+	public void mostraVeiculoCargaPlaca(String placa, List<Carga> carrosCarga) {
+		Optional<Carga> carro = carrosCarga.stream()
+				.filter(veiculo -> veiculo.getPlaca().equals(placa))
+				.findFirst();
+		System.out.println(carro.get().toString());
+	}
+
+	public boolean veiculoExisteListaPasseio(String placa, List<Passeio> carrosPasseio) {		
+		return carrosPasseio.stream()		
+		                    .anyMatch(listaCarros -> listaCarros.getPlaca().equals(placa));		
+	}
+
+	public boolean veiculoExisteListaCarga(String placa, List<Carga> carrosCarga) {		
+		return carrosCarga.stream()		
+		                    .anyMatch(listaCarros -> listaCarros.getPlaca().equals(placa));		
+	}
+	public void adicionaVeiculo(List<Passeio> carrosPasseio, Passeio passeio) {
+		carrosPasseio.add(passeio);		
+	}
+	
+	public void adicionaVeiculo(List<Carga> carrosCarga, Carga carga) {
+		carrosCarga.add(carga);		
+	}
+
+	
 
 }

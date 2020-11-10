@@ -1,6 +1,6 @@
 package sistemveiculo;
 
-public class Passeio extends Veiculo implements Calcula {
+public  final class Passeio extends Veiculo implements Calcula {
 
 	private int qtdPassageiro;
 
@@ -11,22 +11,22 @@ public class Passeio extends Veiculo implements Calcula {
 		this.qtdPassageiro = qtdPassageiro;
 	}
 
-	public int getQtdPassageiro() {
+	public final int getQtdPassageiro() {
 		return qtdPassageiro;
 	}
 
-	public void setQtdPassageiro(int qtdPassageiro) {
+	public  final void setQtdPassageiro(int qtdPassageiro) {
 		this.qtdPassageiro = qtdPassageiro;
 	}
 
 	@Override
-	public int calcular() {
+	public  final int calcular() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double calcVeiculo(double velocMax) {
+	public  final double calcVeiculo(double velocMax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

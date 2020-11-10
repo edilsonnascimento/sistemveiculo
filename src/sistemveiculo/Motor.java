@@ -26,4 +26,9 @@ public class Motor {
 		this.potencia = potencia;
 	}
 
+	@Override
+	public String toString() {
+		return "Motor [qtdPistoes=" + qtdPistoes + ", potencia=" + potencia + "]";
+	}
+
 }
