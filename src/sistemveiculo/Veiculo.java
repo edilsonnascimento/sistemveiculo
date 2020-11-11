@@ -1,5 +1,11 @@
 package sistemveiculo;
 
+import java.math.BigDecimal;
+
+/**
+ * @author Edilson do Nascmento
+ *
+ */
 public abstract class Veiculo {
 
 	private String placa;
@@ -77,12 +83,12 @@ public abstract class Veiculo {
 		this.motor = motor;
 	}
 
-	public abstract double calcVeiculo(double velocMax);
+	public abstract BigDecimal calcVel(double velocMax);
 
 	@Override
-	public String toString() {
-		return "Veiculo [placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", qtdRodas="
-				+ qtdRodas + ", velocMax=" + velocMax + ", motor=" + motor + "]";
-	}
-
+	public String toString() {	
+		return "\n       * Identificação: placa=" + this.getPlaca() + ", Marca=" + this.getMarca() + ", Modelo=" + this.getModelo() + 
+				", Cor=" + this.getCor() + ", Quantidade-Rodas=" + this.getQtdRodas() + ";\n" +
+		        this.getMotor();		       
+	}	
 }

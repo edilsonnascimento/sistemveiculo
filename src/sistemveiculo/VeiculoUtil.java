@@ -1,8 +1,13 @@
 package sistemveiculo;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
+/**
+ * @author Edilson do Nascmento
+ *
+ */
 public class VeiculoUtil {
 	
 	public VeiculoUtil(List<Passeio> listaPasseio, List<Carga> listaCarga) {
@@ -47,17 +52,26 @@ public class VeiculoUtil {
 	}
 
 	public void mostraVeiculoPassioPlaca(String placa, List<Passeio> carrosPasseio) {
-		Optional<Passeio> carro = carrosPasseio.stream()
-				.filter(veiculo -> veiculo.getPlaca().equals(placa))
-				.findFirst();
-		System.out.println(carro.get().toString());
+		
+		try {
+			Optional<Passeio> carro = carrosPasseio.stream()
+					.filter(veiculo -> veiculo.getPlaca().equals(placa))
+					.findFirst();
+			System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");			
+		} catch (NoSuchElementException n) {
+			System.out.println("Veículo não encontrado");
+		}
 	}
 
 	public void mostraVeiculoCargaPlaca(String placa, List<Carga> carrosCarga) {
-		Optional<Carga> carro = carrosCarga.stream()
-				.filter(veiculo -> veiculo.getPlaca().equals(placa))
-				.findFirst();
-		System.out.println(carro.get().toString());
+		try {
+			Optional<Carga> carro = carrosCarga.stream()
+					.filter(veiculo -> veiculo.getPlaca().equals(placa))
+					.findFirst();
+			System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");			
+		} catch (NoSuchElementException n) {
+			System.out.println("Veículo não encontrado");
+		}
 	}
 
 	public boolean veiculoExisteListaPasseio(String placa, List<Passeio> carrosPasseio) {		

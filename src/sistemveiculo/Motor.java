@@ -1,5 +1,8 @@
 package sistemveiculo;
-
+/**
+ * @author Edilson do Nascmento
+ *
+ */
 public class Motor {
 
 	private int qtdPistoes;
@@ -28,7 +31,7 @@ public class Motor {
 
 	@Override
 	public String toString() {
-		return "Motor [qtdPistoes=" + qtdPistoes + ", potencia=" + potencia + "]";
+		return "       * Motor   : Quantida de Pistões=" + this.getQtdPistoes() + ", Potência=" + this.getPotencia() +";";
 	}
 
 }

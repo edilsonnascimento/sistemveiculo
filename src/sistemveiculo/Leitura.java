@@ -3,7 +3,10 @@ package sistemveiculo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * @author Edilson do Nascmento
+ *
+ */
 public class Leitura {
 
 	public String entDados(String dados) {

@@ -1,5 +1,10 @@
 package sistemveiculo;
 
+import java.math.BigDecimal;
+/**
+ * @author Edilson do Nascmento
+ *
+ */
 public  final class Carga extends Veiculo implements Calcula {
 
 	private int tara;
@@ -31,14 +36,22 @@ public  final class Carga extends Veiculo implements Calcula {
 
 	@Override
 	public  final int calcular() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getQtdRodas() + super.getQtdRodas() + super.getVelocMax() + this.cargaMax + this.tara;
+	}
+
+	// Entrada Km/h saída Cm/h
+	@Override
+	public  final BigDecimal calcVel(double velocMax) {
+		return new BigDecimal((velocMax * 1000) * 100);
 	}
 
 	@Override
-	public  final double calcVeiculo(double velocMax) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String toString() {
+		return "\n VEÍCULO DE CARGA: " +
+				super.toString() +
+			   "\n       * Detalhes: Máximo de Carga=" + this.getCargaMax() 
+				+ ", Velocidade Máxima=" + this.calcVel(this.getVelocMax()) + " cm/h";
+		
 	}
 
 }
