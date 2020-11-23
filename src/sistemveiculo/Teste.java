@@ -1,6 +1,5 @@
 package sistemveiculo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,20 +14,18 @@ public class Teste {
 	public static void main(String[] args) {
 
 		Leitura leitura = new Leitura();
-		List<Passeio> carrosPasseio = new ArrayList<Passeio>();
-		List<Carga> carrosCarga = new ArrayList<Carga>();
-		BDVeiculos bdVeiculos = new BDVeiculos(carrosPasseio, carrosCarga);
+		BDVeiculos bdVeiculos = new BDVeiculos();
 		
 		mostraMenu();
-		operarMenu(leitura, bdVeiculos, carrosCarga, carrosPasseio);
+		operarMenu(leitura, bdVeiculos, bdVeiculos.inicializaListaCarga(), bdVeiculos.inicializaListaPasseio());
 	}
 
-	public static void cadastraVeiculoPasseio(BDVeiculos util, Leitura leitura, List<Passeio> carrosPasseio) {
+	public static void cadastraVeiculoPasseio(BDVeiculos bdVeiculos, Leitura leitura, List<Passeio> carrosPasseio) {
 		boolean continuar = true;
 
 		while (continuar) {
 			placa = leitura.entDados("Entre com  a placa do Veículo");
-			if (util.veiculoExisteListaPasseio(placa, carrosPasseio)) {
+			if (bdVeiculos.veiculoExisteListaPasseio(placa)) {
 				System.out.println("Veículo já cadastrado...\n");
 				break;
 			} else {
@@ -41,7 +38,7 @@ public class Teste {
 				int potencia = Integer.parseInt(leitura.entDados("Entre com  a potencia do Veículo"));
 				int qtdPassageiro = Integer
 						.parseInt(leitura.entDados("Entre com  a quantidade Passageiros do Veículo"));
-				util.adicionaVeiculo(carrosPasseio, new Passeio(placa, marca, modelo, cor, qtdRodas, velocMax,
+				bdVeiculos.adicionaVeiculo(new Passeio(placa, marca, modelo, cor, qtdRodas, velocMax,
 						qtdPistoes, potencia, qtdPassageiro));
 				String resposta = leitura.entDados("Deseja continuar com a leitura de veículos? [S]im ou [N]ão?");
 				continuar = resposta.equals("S");
@@ -49,12 +46,12 @@ public class Teste {
 		}
 	}
 
-	public static void cadastrarVeiculoCarga(BDVeiculos util, Leitura leitura, List<Carga> carrosCarga) {
+	public static void cadastrarVeiculoCarga(BDVeiculos bdVeiculo, Leitura leitura, List<Carga> carrosCarga) {
 		boolean continuar = true;
 
 		while (continuar) {
 			placa = leitura.entDados("Entre com  a placa do Veículo");
-			if (util.veiculoExisteListaCarga(placa, carrosCarga)) {
+			if (bdVeiculo.veiculoExisteListaCarga(placa)) {
 				System.out.println("Veículo já cadastrado...\n");
 				break;
 			} else {
@@ -67,8 +64,7 @@ public class Teste {
 				int potencia = Integer.parseInt(leitura.entDados("Entre com  a potencia do Veículo"));
 				int tara = Integer.parseInt(leitura.entDados("Entre com a tara do Veículo:"));
 				int cargaMax = Integer.parseInt(leitura.entDados("Entre com Carga Máxima do Véiculo: "));
-				util.adicionaVeiculo(carrosCarga,
-						new Carga(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia, tara, cargaMax));
+				bdVeiculo.adicionaVeiculo(new Carga(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia, tara, cargaMax));
 				String resposta = leitura.entDados("Deseja continuar com a leitura de veículos? [S]im ou [N]ão?");
 				continuar = resposta.equals("S");
 			}
@@ -88,36 +84,36 @@ public class Teste {
 
 	}
 
-	public static void operarMenu(Leitura leitura, BDVeiculos util, List<Carga> carrosCarga, List<Passeio> carrosPasseio) {
+	public static void operarMenu(Leitura leitura, BDVeiculos bdVeiculos, List<Carga> carrosCarga, List<Passeio> carrosPasseio) {
 		while (naoSairDoSistema(opcao)) {
 
 			opcao = (leitura.entDados(""));
 
 			switch (opcao) {
 			case "1":
-				cadastraVeiculoPasseio(util, leitura, carrosPasseio);
+				cadastraVeiculoPasseio(bdVeiculos, leitura, carrosPasseio);
 				break;
 
 			case "2":
-				cadastrarVeiculoCarga(util, leitura, carrosCarga);
+				cadastrarVeiculoCarga(bdVeiculos, leitura, carrosCarga);
 				break;
 
 			case "3":
-				util.mostrarTodosVeiculosPasseio(carrosPasseio);
+				bdVeiculos.mostrarTodosVeiculosPasseio();
 				break;
 
 			case "4":
-				util.mostrarTodosVeiculosCarga(carrosCarga);
+				bdVeiculos.mostrarTodosVeiculosCarga();
 				break;
 
 			case "5":
 				placa = leitura.entDados("Entre com a placa do veículo");
-				util.mostraVeiculoPassioPlaca(placa, carrosPasseio);
+				bdVeiculos.mostraVeiculoPassioPlaca(placa);
 				break;
 
 			case "6":
 				placa = leitura.entDados("Entre com a placa do veículo");
-				util.mostraVeiculoCargaPlaca(placa, carrosCarga);
+				bdVeiculos.mostraVeiculoCargaPlaca(placa);
 				break;
 			}
 
