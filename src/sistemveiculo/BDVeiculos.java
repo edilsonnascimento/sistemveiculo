@@ -8,9 +8,9 @@ import java.util.Optional;
  * @author Edilson do Nascmento
  *
  */
-public class VeiculoUtil {
+public class BDVeiculos {
 	
-	public VeiculoUtil(List<Passeio> listaPasseio, List<Carga> listaCarga) {
+	public BDVeiculos(List<Passeio> listaPasseio, List<Carga> listaCarga) {
 		inicializaListaCarga(listaCarga);
 		inicializaListaPasseio(listaPasseio);
 	}

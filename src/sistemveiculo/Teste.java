@@ -17,13 +17,13 @@ public class Teste {
 		Leitura leitura = new Leitura();
 		List<Passeio> carrosPasseio = new ArrayList<Passeio>();
 		List<Carga> carrosCarga = new ArrayList<Carga>();
-		VeiculoUtil util = new VeiculoUtil(carrosPasseio, carrosCarga);
+		BDVeiculos bdVeiculos = new BDVeiculos(carrosPasseio, carrosCarga);
 		
 		mostraMenu();
-		operarMenu(leitura, util, carrosCarga, carrosPasseio);
+		operarMenu(leitura, bdVeiculos, carrosCarga, carrosPasseio);
 	}
 
-	public static void cadastraVeiculoPasseio(VeiculoUtil util, Leitura leitura, List<Passeio> carrosPasseio) {
+	public static void cadastraVeiculoPasseio(BDVeiculos util, Leitura leitura, List<Passeio> carrosPasseio) {
 		boolean continuar = true;
 
 		while (continuar) {
@@ -49,7 +49,7 @@ public class Teste {
 		}
 	}
 
-	public static void cadastrarVeiculoCarga(VeiculoUtil util, Leitura leitura, List<Carga> carrosCarga) {
+	public static void cadastrarVeiculoCarga(BDVeiculos util, Leitura leitura, List<Carga> carrosCarga) {
 		boolean continuar = true;
 
 		while (continuar) {
@@ -88,7 +88,7 @@ public class Teste {
 
 	}
 
-	public static void operarMenu(Leitura leitura, VeiculoUtil util, List<Carga> carrosCarga, List<Passeio> carrosPasseio) {
+	public static void operarMenu(Leitura leitura, BDVeiculos util, List<Carga> carrosCarga, List<Passeio> carrosPasseio) {
 		while (naoSairDoSistema(opcao)) {
 
 			opcao = (leitura.entDados(""));
