@@ -16,16 +16,14 @@ public class BDVeiculos {
 	public BDVeiculos() {
 		this.carrosPasseio = new ArrayList<Passeio>();
 		this.carrosCarga = new ArrayList<Carga>();
-		this.inicializaListaCarga();
-		this.inicializaListaPasseio();
 	}
 
 	public List<Passeio> inicializaListaPasseio() {
 		Passeio camaro      = new Passeio("AXU456", "Chevrolet", "ZT", "preta",    4, 350, 8, 800, 5);
 		Passeio corsa       = new Passeio("TOI056", "Chevrolet", "GH", "vermelho", 4, 110, 4, 110, 5);
-		Passeio opala       = new Passeio("LOH086", "Chevrolet", "LK", "bordo",    4, 245, 8, 110, 5);
-		Passeio mustang     = new Passeio("LTLW90", "Ford",      "TW", "verde",    4, 860, 8, 110, 5);
-		Passeio golf        = new Passeio("VBG768", "Volkswagen","PL", "fuxia",    4, 300, 4, 110, 5);
+		Passeio opala       = new Passeio("LOH086", "Chevrolet", "LK", "bordo",    4, 100, 8, 110, 5);
+		Passeio mustang     = new Passeio("LTLW90", "Ford",      "TW", "verde",    4,  95, 8, 110, 5);
+		Passeio golf        = new Passeio("VBG768", "Volkswagen","PL", "fuxia",    4,  90, 4, 110, 5);			
 		
 		carrosPasseio.add(camaro);
 		carrosPasseio.add(corsa);
@@ -37,11 +35,12 @@ public class BDVeiculos {
 	}
 	
 	public List<Carga> inicializaListaCarga() {
-		Carga volvoFH540       = new Carga("ABSSE", "Volvo",     "FH540",       "azul",     12, 350, 8, 800, 1500, 16000);
-		Carga scaniaR450       = new Carga("HGI056", "Scania",   "R450",        "vermelho", 16, 110, 4, 110, 1500, 16000);
-		Carga mercedes         = new Carga("RSH086", "Mercedes", "Actros 2651", "bordo",    14, 245, 8, 110, 1500, 16000);
-		Carga dafXf            = new Carga("MNLW90", "Daf",      "XF 105 510",  "preta",    12, 320, 8, 110, 1500, 16000);
-		Carga teslaTSLA        = new Carga("WSG768", "tesla",    "Semi",        "chumbo",   12, 300, 4, 110, 1500, 16000);
+
+		Carga volvoFH540       = new Carga("ABSSE", "Volvo",     "FH540",       "azul",     12, 80, 8,1800, 1500, 16000);
+		Carga scaniaR450       = new Carga("HGI056", "Scania",   "R450",        "vermelho", 16, 380,  4, 1850, 1500, 16000);
+		Carga mercedes         = new Carga("RSH086", "Mercedes", "Actros 2651", "bordo",    14, 85,  8, 1905, 1500, 16000);
+		Carga dafXf            = new Carga("MNLW90", "Daf",      "XF 105 510",  "preta",    12, 83,  8, 1100, 1500, 16000);
+		Carga teslaTSLA        = new Carga("WSG768", "tesla",    "Semi",        "chumbo",   12, 81,  4, 1020, 1500, 16000);
 		
 		carrosCarga.add(volvoFH540);
 		carrosCarga.add(scaniaR450);

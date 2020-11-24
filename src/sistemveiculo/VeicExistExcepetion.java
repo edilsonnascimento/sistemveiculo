@@ -1,6 +1,6 @@
 package sistemveiculo;
 /**
-Criado por: Edilson do Nascimento. 
+ * @author Edilson do Nascmento 
  */
 
 public class VeicExistExcepetion extends Exception{

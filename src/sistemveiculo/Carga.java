@@ -12,10 +12,18 @@ public  final class Carga extends Veiculo implements Calcula {
 
 	
 	public Carga(String placa, String marca, String modelo, String cor, int qtdRodas, int velocMax, int qtdPistoes,
-			int potencia, int tara, int cargaMax) {
-		super(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia);
+			int potencia, int tara, int cargaMax){
+		super(placa, marca, modelo, cor, qtdRodas, qtdPistoes, potencia);
 		this.tara = tara;
 		this.cargaMax = cargaMax;
+		try {
+			super.setVelocMax(velocMax);
+		} catch (VelocException e) {
+			try {
+				super.setVelocMax(90);
+				System.out.println("Carregado velocidade padrão 90 Km para veículos de Carga...");
+			} catch (VelocException e1) {}
+		}
 	}
 
 	public  final int getTara() {
@@ -50,7 +58,7 @@ public  final class Carga extends Veiculo implements Calcula {
 		return "\n VEÍCULO DE CARGA: " +
 				super.toString() +
 			   "\n       * Detalhes: Máximo de Carga=" + this.getCargaMax() 
-				+ ", Velocidade Máxima=" + this.calcVel(this.getVelocMax()) + " cm/h";
+				+ ", Velocidade Máxima=" + this.calcVel(super.getVelocMax()) + " cm/h";
 		
 	}
 

@@ -37,8 +37,8 @@ public class Teste {
 				int potencia = Integer.parseInt(leitura.entDados("Entre com  a potencia do Veículo"));
 				int qtdPassageiro = Integer
 						.parseInt(leitura.entDados("Entre com  a quantidade Passageiros do Veículo"));
-				bdVeiculos.adicionaVeiculo(new Passeio(placa, marca, modelo, cor, qtdRodas, velocMax,
-						qtdPistoes, potencia, qtdPassageiro));
+					bdVeiculos.adicionaVeiculo(new Passeio(placa, marca, modelo, cor, qtdRodas, velocMax,
+							qtdPistoes, potencia, qtdPassageiro));
 				String resposta = leitura.entDados("Deseja continuar com a leitura de veículos? [S]im ou [N]ão?");
 				continuar = resposta.equals("S");
 			}
@@ -62,7 +62,7 @@ public class Teste {
 				int potencia = Integer.parseInt(leitura.entDados("Entre com  a potencia do Veículo"));
 				int tara = Integer.parseInt(leitura.entDados("Entre com a tara do Veículo:"));
 				int cargaMax = Integer.parseInt(leitura.entDados("Entre com Carga Máxima do Véiculo: "));
-				bdVeiculo.adicionaVeiculo(new Carga(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia, tara, cargaMax));
+					bdVeiculo.adicionaVeiculo(new Carga(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia, tara, cargaMax));
 				String resposta = leitura.entDados("Deseja continuar com a leitura de veículos? [S]im ou [N]ão?");
 				continuar = resposta.equals("S");
 			}

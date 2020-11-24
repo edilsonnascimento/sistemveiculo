@@ -11,8 +11,16 @@ public  final class Passeio extends Veiculo implements Calcula {
 
 	
 	public Passeio(String placa, String marca, String modelo, String cor, int qtdRodas, int velocMax, int qtdPistoes,
-			int potencia, int qtdPassageiro) {
-		super(placa, marca, modelo, cor, qtdRodas, velocMax, qtdPistoes, potencia);
+			int potencia, int qtdPassageiro){
+		super(placa, marca, modelo, cor, qtdRodas, qtdPistoes, potencia);
+		try {
+			super.setVelocMax(velocMax);
+		} catch (VelocException e) {
+			try {
+				super.setVelocMax(110);
+				System.out.println("Carregado velocidade padrão 110 Km para veículos de Passeio...");
+			} catch (VelocException e1) {}
+		}
 		this.qtdPassageiro = qtdPassageiro;
 	}
 
@@ -39,7 +47,7 @@ public  final class Passeio extends Veiculo implements Calcula {
 		return "\nVEÍCULO DE PASSEIO:" +
 				super.toString() +
 			   "\n       * Detalhes: Quantidade de Passageiros=" + this.getQtdPassageiro() + ", " + 
-				                     "Velocidade Máxima=" + this.calcVel(this.getVelocMax()) + " m/h";
+				                     "Velocidade Máxima=" + (super.getVelocMax()) + " m/h";
 		
 	}
 

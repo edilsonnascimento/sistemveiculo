@@ -16,15 +16,14 @@ public abstract class Veiculo {
 	private int velocMax;
 	private Motor motor;
 
-	public Veiculo(String placa, String marca, String modelo, String cor, int qtdRodas, int velocMax, int qtdPistoes,
-			int potencia) {
-		this.placa = placa;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.cor = cor;
-		this.qtdRodas = qtdRodas;
-		this.velocMax = velocMax;
-		this.motor = new Motor(qtdPistoes, potencia);
+	public Veiculo(String placa, String marca, String modelo, String cor, int qtdRodas, int qtdPistoes,
+			int potencia){
+		this.setPlaca(placa);
+		this.setMarca(marca);
+		this.setModelo(modelo);
+		this.setCor(cor);
+		this.setQtdRodas(qtdRodas);
+		this.setMotor(new Motor(qtdPistoes, potencia));
 	}
 
 	public String getPlaca() {
@@ -71,8 +70,12 @@ public abstract class Veiculo {
 		return velocMax;
 	}
 
-	public final void setVelocMax(int velocMax) {
-		this.velocMax = velocMax;
+	public final void setVelocMax(int velocMax) throws VelocException {
+		if( (velocMax < 80) || (velocMax > 110) ) {
+			throw new VelocException(this);
+		}else {
+			this.velocMax = velocMax;
+		}
 	}
 
 	public Motor getMotor() {
