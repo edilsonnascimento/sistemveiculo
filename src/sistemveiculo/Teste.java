@@ -20,14 +20,13 @@ public class Teste {
 		operarMenu(leitura, bdVeiculos, bdVeiculos.inicializaListaCarga(), bdVeiculos.inicializaListaPasseio());
 	}
 
-	public static void cadastraVeiculoPasseio(BDVeiculos bdVeiculos, Leitura leitura, List<Passeio> carrosPasseio) {
+	public static void cadastraVeiculoPasseio(BDVeiculos bdVeiculos, Leitura leitura, List<Passeio> carrosPasseio) throws VeicExistExcepetion {
 		boolean continuar = true;
 
 		while (continuar) {
 			placa = leitura.entDados("Entre com  a placa do Veículo");
 			if (bdVeiculos.veiculoExisteListaPasseio(placa)) {
-				System.out.println("Veículo já cadastrado...\n");
-				break;
+				throw new VeicExistExcepetion("Passeio");
 			} else {
 				String marca = leitura.entDados("Entre com  a marca do Veículo");
 				String modelo = leitura.entDados("Entre com  a modelo do Veículo");
@@ -46,14 +45,13 @@ public class Teste {
 		}
 	}
 
-	public static void cadastrarVeiculoCarga(BDVeiculos bdVeiculo, Leitura leitura, List<Carga> carrosCarga) {
+	public static void cadastrarVeiculoCarga(BDVeiculos bdVeiculo, Leitura leitura, List<Carga> carrosCarga) throws VeicExistExcepetion {
 		boolean continuar = true;
 
 		while (continuar) {
 			placa = leitura.entDados("Entre com  a placa do Veículo");
-			if (bdVeiculo.veiculoExisteListaCarga(placa)) {
-				System.out.println("Veículo já cadastrado...\n");
-				break;
+			if (bdVeiculo.veiculoExisteListaCarga(placa)) {				
+				throw new VeicExistExcepetion("Carga");
 			} else {
 				String marca = leitura.entDados("Entre com  a marca do Veículo");
 				String modelo = leitura.entDados("Entre com  a modelo do Veículo");
@@ -85,17 +83,26 @@ public class Teste {
 	}
 
 	public static void operarMenu(Leitura leitura, BDVeiculos bdVeiculos, List<Carga> carrosCarga, List<Passeio> carrosPasseio) {
+		
 		while (naoSairDoSistema(opcao)) {
 
 			opcao = (leitura.entDados(""));
 
 			switch (opcao) {
 			case "1":
-				cadastraVeiculoPasseio(bdVeiculos, leitura, carrosPasseio);
+				try {
+					cadastraVeiculoPasseio(bdVeiculos, leitura, carrosPasseio);
+				} catch (VeicExistExcepetion e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 
 			case "2":
-				cadastrarVeiculoCarga(bdVeiculos, leitura, carrosCarga);
+				try {
+					cadastrarVeiculoCarga(bdVeiculos, leitura, carrosCarga);
+				} catch (VeicExistExcepetion e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 
 			case "3":
