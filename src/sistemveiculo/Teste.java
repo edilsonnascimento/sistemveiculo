@@ -78,7 +78,9 @@ public class Teste {
 		System.out.println("4) Imprimir Todos os Veículos de Carga");
 		System.out.println("5) Imprimir Veículo de Passeio pela Placa ");
 		System.out.println("6) Imprimir Veículo de Carga pela Placa");
-		System.out.println("7) Sair do Sistema");
+		System.out.println("7) Excluir Veículo de Passeio pela Placa");
+		System.out.println("8) Excluir Veículo de Carga pela Placa");
+		System.out.println("9) Sair do Sistema");
 
 	}
 
@@ -89,45 +91,56 @@ public class Teste {
 			opcao = (leitura.entDados(""));
 
 			switch (opcao) {
-			case "1":
-				try {
-					cadastraVeiculoPasseio(bdVeiculos, leitura, carrosPasseio);
-				} catch (VeicExistExcepetion e) {
-					System.out.println(e.getMessage());
-				}
-				break;
-
-			case "2":
-				try {
-					cadastrarVeiculoCarga(bdVeiculos, leitura, carrosCarga);
-				} catch (VeicExistExcepetion e) {
-					System.out.println(e.getMessage());
-				}
-				break;
-
-			case "3":
-				bdVeiculos.mostrarTodosVeiculosPasseio();
-				break;
-
-			case "4":
-				bdVeiculos.mostrarTodosVeiculosCarga();
-				break;
-
-			case "5":
-				placa = leitura.entDados("Entre com a placa do veículo");
-				bdVeiculos.mostraVeiculoPassioPlaca(placa);
-				break;
-
-			case "6":
-				placa = leitura.entDados("Entre com a placa do veículo");
-				bdVeiculos.mostraVeiculoCargaPlaca(placa);
-				break;
-			}
-
+				case "1":
+					try {
+						cadastraVeiculoPasseio(bdVeiculos, leitura, carrosPasseio);
+					} catch (VeicExistExcepetion e) {
+						System.out.println(e.getMessage());
+					}
+					break;
+	
+				case "2":
+					try {
+						cadastrarVeiculoCarga(bdVeiculos, leitura, carrosCarga);
+					} catch (VeicExistExcepetion e) {
+						System.out.println(e.getMessage());
+					}
+					break;
+	
+				case "3":
+					bdVeiculos.mostrarTodosVeiculosPasseio();
+					break;
+	
+				case "4":
+					bdVeiculos.mostrarTodosVeiculosCarga();
+					break;
+	
+				case "5":
+					placa = leitura.entDados("Entre com a placa do veículo");
+						bdVeiculos.mostraVeiculoPassioPlaca(placa);
+						break;
+	
+				case "6":
+					placa = leitura.entDados("Entre com a placa do veículo: ");
+					bdVeiculos.mostraVeiculoCargaPlaca(placa);
+					break;				
+				
+				case "7":
+					placa = leitura.entDados("Entre com a placa do veículo para ser Excluído: ");
+					bdVeiculos.excluirPasseioPlaca(placa);					
+					break;
+					
+				case "8":
+					placa = leitura.entDados("Entre com a placa do veículo para ser Excluído: ");
+					bdVeiculos.excluirCargaPlaca(placa);					
+					break;
+				
+			}//switch
+			
 			if (naoSairDoSistema(opcao)) {
 				mostraMenu();
 			}
-		}
+		}//while
 
 		System.out.println("SISTEMA FINALIZADO...");
 		System.exit(0);
@@ -135,7 +148,7 @@ public class Teste {
 	}
 
 	private static boolean naoSairDoSistema(String opcao) {
-		return !opcao.equals("7");
+		return !opcao.equals("9");
 	}
 
 

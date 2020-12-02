@@ -64,14 +64,19 @@ public class BDVeiculos {
 		Optional<Passeio> carro = carrosPasseio.stream()
 					.filter(veiculo -> veiculo.getPlaca().equals(placa))
 					.findFirst();
+		if(carro.isPresent()) {
 			System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");
+		}else System.out.println("Não foi encontra veículo com essa placa..BDVeiculos.");
+
 	}
 
 	public void mostraVeiculoCargaPlaca(String placa) {
 			Optional<Carga> carro = carrosCarga.stream()
 					.filter(veiculo -> veiculo.getPlaca().equals(placa))
 					.findFirst();
-			System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");		
+			if(carro.isPresent()) {
+				System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");
+			}else System.out.println("Não foi encontra veículo com essa placa..BDVeiculos.");
 	}
 
 	public boolean veiculoExisteListaPasseio(String placa) {		
@@ -92,5 +97,26 @@ public class BDVeiculos {
 	}
 
 	
+	public void excluirCargaPlaca(String placa) {
+		Optional<Carga> carro = carrosCarga.stream()
+				.filter(veiculo -> veiculo.getPlaca().equals(placa))
+				.findFirst();
+		if(carro.isPresent()) {
+			System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");
+			carrosCarga.remove(carro.get());			
+			System.out.println("REMOVIDO COM SUCESSO.....");
+		}else System.out.println("Não foi encontrado veículo com essa placa " + placa);
+	}
+
+	public void excluirPasseioPlaca(String placa) {
+		Optional<Passeio> carro = carrosPasseio.stream()
+				.filter(veiculo -> veiculo.getPlaca().equals(placa))
+				.findFirst();
+		if(carro.isPresent()) {
+			System.out.println(carro.get().toString() + ";\n       * Cálculo:  " + carro.get().calcular() + ".\n");
+			carrosPasseio.remove(carro.get());			
+			System.out.println("REMOVIDO COM SUCESSO.....");
+		}else System.out.println("Não foi encontrado veículo com essa placa " + placa);
+	}
 
 }
